@@ -1,12 +1,14 @@
 Guidelines
+
 General guidelines:
-1.	Follow the instructions in order - do not skip ahead
-2.	After each step, commit your changes to GitHub and tag it clearly
-3.	There is no fixed time limit for the test but we do not expect to see any extended gaps between commits
-4.	Please follow an Object Oriented and TDD based approach
-5.	Aim for the simplest solution (i.e. minimal amount of code) which fully solves the problem
-6.	We are equally interested in how you tested your implementation as the implementation itself.
-When finished, email csongor.zalatnai@moneysupermarket.com and paul.milner@moneysupermarket.com and emma.johnson@oscar-tech.com with the repository location.
+- Follow the instructions in order - do not skip ahead
+- After each step, commit your changes to GitHub and tag it clearly
+- There is no fixed time limit for the test but we do not expect to see any extended gaps between commits
+- Please follow an Object Oriented and TDD based approach
+- Aim for the simplest solution (i.e. minimal amount of code) which fully solves the problem
+- We are equally interested in how you tested your implementation as the implementation itself.
+
+
 Test description
 - Create an Apple
 - The apple has a colour, weight, taste (allowed values: 1, 2, 3, 4), a flag which indicates whether it has a worm in it
