@@ -2,6 +2,7 @@ package com.msm.test.service;
 
 import com.msm.test.exceptions.BadFruitException;
 import com.msm.test.fruits.Apple;
+import org.apache.log4j.Logger;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -14,6 +15,7 @@ import java.util.Set;
  */
 public class FiveADay {
 
+    private Logger log = Logger.getLogger(FiveADay.class);
     private Validator validator;
 
     public FiveADay(){
@@ -24,8 +26,15 @@ public class FiveADay {
 
 
     public Apple eatApple(Apple apple) throws BadFruitException {
+        log.info("In the method : eatApple");
 
+        //Returns IllegalArgumentException is an argument apple is Null.
+        if (null == apple){
+            log.debug("apple not supplied");
+            throw new IllegalArgumentException();
+        }
 
+        //Validate the apple object
         final Set<ConstraintViolation<Apple>> validate = validator.validate(apple);
 
         //Validate all the input fields.
@@ -33,6 +42,9 @@ public class FiveADay {
         {
             throw new BadFruitException(validate.iterator().next().getMessage());
         }
+
+
+
 
         return apple;
     }
