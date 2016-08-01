@@ -1,11 +1,25 @@
 package com.msm.test.fruits;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by asbhui on 01/08/2016.
  */
 public class Fruit {
+
+    @NotNull
     private String color;
+
+    @NotNull
+    @Min(10)
+    @Max(100)
     private int weight;
+
+    @NotNull
+    @Min(1)
+    @Max(4)
     private int taste;
 
     public Fruit() {
