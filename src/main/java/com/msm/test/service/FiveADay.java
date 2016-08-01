@@ -2,6 +2,8 @@ package com.msm.test.service;
 
 import com.msm.test.exceptions.BadFruitException;
 import com.msm.test.fruits.Apple;
+import com.msm.test.utensils.Peeler;
+import com.msm.test.utensils.PeelerFactory;
 import org.apache.log4j.Logger;
 
 import javax.validation.ConstraintViolation;
@@ -43,9 +45,29 @@ public class FiveADay {
             throw new BadFruitException(validate.iterator().next().getMessage());
         }
 
+        //Check apple doesnt have any worms and taste should be better than 3
+        if(!apple.isWorm() && apple.getTaste() >= 3){
 
-
+            //Check if apple is peeled or not
+            peelApple(apple);
+        }
 
         return apple;
+    }
+
+    private void peelApple(Apple apple) {
+
+        //Check if apple is not peeled before than get a peeler and peel the apple.
+        if(apple.isPeeled() == false)
+        {
+            //Get the peeler
+            final Peeler peeler = getPeeler(apple);
+            peeler.peel(apple);
+        }
+    }
+
+    public Peeler getPeeler(Apple apple){
+        //Used factory to determine which peeler is required.
+        return PeelerFactory.getPeeler(apple.getColor());
     }
 }
