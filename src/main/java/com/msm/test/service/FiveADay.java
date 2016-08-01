@@ -52,6 +52,11 @@ public class FiveADay {
             peelApple(apple);
         }
 
+        //It was not clear in the instructions what this method has to return and what would be the final status of apple.
+        //Assumption apple has to return with eaten state true.
+        if(apple.isPeeled() && apple.isEaten()==false)
+            apple.setEaten(true);
+
         return apple;
     }
 

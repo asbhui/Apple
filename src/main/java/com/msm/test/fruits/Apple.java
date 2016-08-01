@@ -17,6 +17,10 @@ public class Apple extends Fruit {
     public Apple(Color color, int weight, int taste) {
         super(color, weight, taste);
     }
+    public Apple(Color color, int weight, int taste, boolean worm) {
+        super(color, weight, taste);
+        this.worm = worm;
+    }
 
     /**
      * @return the worm

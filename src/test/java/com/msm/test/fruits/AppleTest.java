@@ -114,18 +114,50 @@ public class AppleTest {
 
 
     @Test
-    public void apple_createUnpeeledRedAppleWithNoWormAndTaste4_ReturnApple() throws BadFruitException{
+    public void apple_createUnpeeledRedAppleWithNoWormAndTaste4_ReturnApplePeeled() throws BadFruitException{
         Apple apple = new Apple(Color.RED, 60, 4);
         assertThat(fiveADay.eatApple(apple),
-                allOf(hasProperty("eaten", is(false)),
+                allOf(hasProperty("eaten", is(true)),
                         hasProperty("peeled", is(true)),
                         hasProperty("worm", is(false))
                 ));
     }
 
     @Test
-    public void apple_createUnpeeledBlueAppleWithNoWormAndTaste4_ReturnAppleEaten() throws BadFruitException{
-        Apple apple = new Apple(Color.RED, 60, 4);
+    public void apple_createUnpeeledGreenAppleWithNoWormAndTaste4_ReturnApplePeeledAndEaten() throws BadFruitException{
+        Apple apple = new Apple(Color.GREEN, 60, 4);
+        assertThat(fiveADay.eatApple(apple),
+                allOf(hasProperty("eaten", is(true)),
+                        hasProperty("peeled", is(true)),
+                        hasProperty("worm", is(false))
+                ));
+    }
+
+    @Test
+    public void apple_createUnpeeledRedAppleWithNoWormAndTasteAbove3_ReturnApplePeeledAndEaten() throws BadFruitException{
+        Apple apple = new Apple(Color.RED, 20, 3);
+        assertThat(fiveADay.eatApple(apple),
+                allOf(hasProperty("eaten", is(true)),
+                        hasProperty("peeled", is(true)),
+                        hasProperty("worm", is(false))
+                ));
+    }
+
+
+    @Test
+    public void apple_createUnpeeledBlueAppleWithWormAndTasteAbove4_ReturnAppleWorm() throws BadFruitException{
+        Apple apple = new Apple(Color.BLUE, 50, 4,true);
+        assertThat(fiveADay.eatApple(apple),
+                allOf(hasProperty("eaten", is(false)),
+                        hasProperty("peeled", is(false)),
+                        hasProperty("worm", is(true))
+                ));
+    }
+
+    @Test
+    public void apple_createPeeledBlueAppleWithNoWormAndTasteAbove4_ReturnApplePeeledAndEaten() throws BadFruitException{
+        Apple apple = new Apple(Color.BLUE, 50, 4);
+        apple.setPeeled(true);
         assertThat(fiveADay.eatApple(apple),
                 allOf(hasProperty("eaten", is(true)),
                         hasProperty("peeled", is(true)),
