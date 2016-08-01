@@ -18,27 +18,48 @@ public class Fruit {
         this.taste = taste;
     }
 
+    /**
+     * @return the color
+     */
     public String getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    /**
+     * @param color the color to set
+     */
+    public Fruit setColor(String color) {
         this.color = color;
+        return this;
     }
 
+    /**
+     * @return the weight
+     */
     public int getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    /**
+     * @param weight the weight to set
+     */
+    public Fruit setWeight(int weight) {
         this.weight = weight;
+        return this;
     }
 
+    /**
+     * @return the taste
+     */
     public int getTaste() {
         return taste;
     }
 
-    public void setTaste(int taste) {
+    /**
+     * @param taste the taste to set
+     */
+    public Fruit setTaste(int taste) {
         this.taste = taste;
+        return this;
     }
 }

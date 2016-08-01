@@ -5,7 +5,9 @@ package com.msm.test.fruits;
  */
 public class Apple extends Fruit {
 
-    
+    private boolean worm;
+    private boolean peeled;
+    private boolean eaten;
 
     public Apple() {
     }
@@ -14,6 +16,48 @@ public class Apple extends Fruit {
         super(color, weight, taste);
     }
 
+    /**
+     * @return the worm
+     */
+    public boolean isWorm() {
+        return worm;
+    }
 
+    /**
+     * @param worm the worm to set
+     */
+    public Apple setWorm(boolean worm) {
+        this.worm = worm;
+        return this;
+    }
 
+    /**
+     * @return the peeled
+     */
+    public boolean isPeeled() {
+        return peeled;
+    }
+
+    /**
+     * @param peeled the peeled to set
+     */
+    public Apple setPeeled(boolean peeled) {
+        this.peeled = peeled;
+        return this;
+    }
+
+    /**
+     * @return the eaten
+     */
+    public boolean isEaten() {
+        return eaten;
+    }
+
+    /**
+     * @param eaten the eaten to set
+     */
+    public Apple setEaten(boolean eaten) {
+        this.eaten = eaten;
+        return this;
+    }
 }
