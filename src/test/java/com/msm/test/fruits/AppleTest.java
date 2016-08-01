@@ -112,4 +112,16 @@ public class AppleTest {
         fiveADay.eatApple(apple);
     }
 
+
+    @Test
+    public void apple_createUnpeeledRedAppleWithNoWormAndTaste4_ReturnApple() throws BadFruitException{
+        Apple apple = new Apple(Color.RED, 60, 4);
+        assertThat(fiveADay.eatApple(apple),
+                allOf(hasProperty("eaten", is(true)),
+                        hasProperty("peeled", is(true)),
+                        hasProperty("worm", is(false))
+                ));
+    }
+
+
 }
