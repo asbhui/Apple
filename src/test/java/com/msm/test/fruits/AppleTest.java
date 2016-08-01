@@ -1,7 +1,9 @@
 package com.msm.test.fruits;
 
 import com.msm.test.enums.Color;
+import com.msm.test.exceptions.BadFruitException;
 import com.msm.test.service.FiveADay;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -34,6 +36,11 @@ public class AppleTest {
         validator = factory.getValidator();
     }
 
+    @Before
+    public void setupFiveADay()
+    {
+        fiveADay = new FiveADay();
+    }
 
     @Test
     public void createApple(){
@@ -85,6 +92,24 @@ public class AppleTest {
             assertThat(constraintViolation.getMessage(), anyOf(equalTo("must be less than or equal to 4"),
                     equalTo("must be greater than or equal to 10")));
         }
+    }
+
+
+    @Test
+    public void apple_createUnpeeledRedAppleWithNoWormAndTasteAbove2_ReturnApple() throws BadFruitException {
+        Apple apple = new Apple(Color.RED, 20, 2);
+        assertThat(fiveADay.eatApple(apple),
+                allOf(hasProperty("eaten", is(false)),
+                        hasProperty("peeled", is(false)),
+                        hasProperty("worm", is(false))
+                ));
+    }
+
+
+    @Test(expected=BadFruitException.class)
+    public void apple_createBadApple_throwException() throws BadFruitException{
+        Apple apple = new Apple(Color.RED, 2, 5);
+        fiveADay.eatApple(apple);
     }
 
 }
