@@ -1,5 +1,7 @@
 package com.msm.test.fruits;
 
+import com.msm.test.enums.Color;
+import com.msm.test.service.FiveADay;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -24,6 +26,7 @@ public class AppleTest {
     */
 
     private static Validator validator;
+    private FiveADay fiveADay;
 
     @BeforeClass
     public static void setupBeforeClass() {
@@ -35,11 +38,11 @@ public class AppleTest {
     @Test
     public void createApple(){
 
-        Apple apple = new Apple("Red", 50, 3);
+        Apple apple = new Apple(Color.RED, 50, 3);
 
         assertThat(apple,
                     allOf(
-                            hasProperty("color", is(equalTo("Red"))),
+                            hasProperty("color", is(equalTo(Color.RED))),
                             hasProperty("weight", is(equalTo(50))),
                             hasProperty("taste", is(equalTo(3))),
                             hasProperty("worm", is(false)),
@@ -57,14 +60,14 @@ public class AppleTest {
 
     @Test
     public void appleObject_WithNoErrors() {
-        Apple apple = new Apple("Red", 100, 3);
+        Apple apple = new Apple(Color.RED, 100, 3);
         Set<ConstraintViolation<Apple>> validate = validator.validate(apple);
         assertEquals(0, validate.size());
     }
 
     @Test
     public void appleObject_RedWeight200Taste0_ReturnsValidationErrors() {
-        Apple apple = new Apple("Red", 200, 0);
+        Apple apple = new Apple(Color.RED, 200, 0);
         Set<ConstraintViolation<Apple>> validate = validator.validate(apple);
 
         for (ConstraintViolation<Apple> constraintViolation : validate) {
@@ -75,7 +78,7 @@ public class AppleTest {
 
     @Test
     public void appleObject_RedWeight2Taste5_ReturnsValidationErrors() {
-        Apple apple = new Apple("Red", 2, 5);
+        Apple apple = new Apple(Color.RED, 2, 5);
         Set<ConstraintViolation<Apple>> validate = validator.validate(apple);
 
         for (ConstraintViolation<Apple> constraintViolation : validate) {
@@ -83,4 +86,5 @@ public class AppleTest {
                     equalTo("must be greater than or equal to 10")));
         }
     }
+
 }

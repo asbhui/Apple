@@ -1,5 +1,7 @@
 package com.msm.test.fruits;
 
+import com.msm.test.enums.Color;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -10,7 +12,7 @@ import javax.validation.constraints.NotNull;
 public class Fruit {
 
     @NotNull
-    private String color;
+    private Color color;
 
     @NotNull
     @Min(10)
@@ -26,7 +28,7 @@ public class Fruit {
 
     }
 
-    public Fruit(String color, int weight, int taste) {
+    public Fruit(Color color, int weight, int taste) {
         this.color = color;
         this.weight = weight;
         this.taste = taste;
@@ -35,14 +37,14 @@ public class Fruit {
     /**
      * @return the color
      */
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
     /**
      * @param color the color to set
      */
-    public Fruit setColor(String color) {
+    public Fruit setColor(Color color) {
         this.color = color;
         return this;
     }
